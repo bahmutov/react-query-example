@@ -1,0 +1,6 @@
+{
+  "experimentalComponentTesting": true,
+  "env": {
+    "coverage": false
+  }
+}
