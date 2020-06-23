@@ -30,9 +30,7 @@ it('renders data after mock clock delay', () => {
     const {data} = useQuery({
       queryKey: 'some-key',
       queryFn: () => {
-        console.log('queryFn')
         return new Promise((r) => setTimeout(() => {
-          console.log('resolving with data')
           return r('data')
         }, 3000))
       },
@@ -43,8 +41,8 @@ it('renders data after mock clock delay', () => {
   cy.clock()
   mount(<Example />)
   cy.contains('no data yet')
-  // advance immediate by 3 seconds
+  // advance clock by 3 seconds with a single command
   cy.tick(3010)
-  // and the it shows "data"
+  // and the it shows "data" right away
   cy.contains(/^data$/, {timeout: 100})
 })
